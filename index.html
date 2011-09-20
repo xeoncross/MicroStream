@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>MicroStream @ GitHub</title>
+
+	<style type="text/css">
+		body {
+			margin-top: 1.0em;
+			background-color: #fff;
+			font-family: "helvetica";
+			color: #000000;
+		}
+		#container {
+		  margin: 0 auto;
+		  width: 800px;
+		}
+		h1 { font-size: 3.8em; color: #1517b7; margin-bottom: 0px; }
+		h1 a { text-decoration: none }
+		h2 { font-size: 1.5em; color: #1517b7; }
+		h3 { color: #1517b7; }
+		a { color: #1517b7; }
+		.description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+		.download { float: right; }
+		pre { background: #000; color: #fff; padding: 15px;}
+		hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+		.footer { text-align:center; padding-top:30px; font-style: italic; }
+	</style>
+
+</head>
+
+<body>
+  <a href="http://github.com/Xeoncross/microstream"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+
+  <div id="container">
+
+	<div class="download">
+	  <a href="http://github.com/Xeoncross/microstream/zipball/master">
+		<img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+	  <a href="http://github.com/Xeoncross/microstream/tarball/master">
+		<img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+	</div>
+
+	<h1><a href="http://github.com/Xeoncross/microstream">MicroStream</a></h1>
+	<h3>The Tiny Javascript Lifestream</h3>
+
+	<br />
+
+	<h3>About</h3>
+	<p>This project is an entry to the <a href="http://10k.aneventapart.com/">10k Challenge</a> hosted by <a href="http://aneventapart.com/">An Event Apart</a> and <a href="http://microsoft.com">Microsoft</a>.</p>
+
+	<h3>License</h3>
+	<p>MIT</p>
+
+	<h3>Contact</h3>
+	<p>David Pennington (david[]xeoncross.com)<br/></p>
+
+	<h3>Download</h3>
+	<p>
+	  You can download this project in either
+	  <a href="http://github.com/Xeoncross/microstream/zipball/master">zip</a> or
+	  <a href="http://github.com/Xeoncross/microstream/tarball/master">tar</a> formats.
+	</p>
+	<p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+	  by running:
+	  <pre>$ git clone git://github.com/Xeoncross/microstream</pre>
+	</p>
+
+	<div class="footer">
+	  get the source code on GitHub : <a href="http://github.com/Xeoncross/microstream">Xeoncross/micromvc</a>
+	</div>
+
+	<h2>Installation</h2>
+
+	<p>This system uses the <a href="http://pipes.yahoo.com/pipes/">Yahoo! Pipes</a> web API to aggregate all your RSS feeds into an easy to consume JSON response.</p>
+
+	<h3>Step 1: Register/Login to Yahoo! Pipes</h3>
+
+	<p>Click to create a new pipe and drag a "Fetch Feed" component onto the canvas.</p>
+
+	<p><img src="images/step_1.png" alt="Open Yahoo Pipes" /></p>
+
+	<h3>Step 2: Add sites</h3>
+
+	<p>Click the "+" (plus) icon next to the text "URL" to create additional input fields which you can use to add all your feed URL's.</p>
+
+	<p><img src="images/step_2.png" alt="Open Yahoo Pipes" /></p>
+
+	<h3>Step 3: Order Results</h3>
+
+	<p>Add a new "Sort" operator to the canvas and select "sort by pubDate, descending" to sort all the items in the order they were published. Make sure to drag a link between the "Fetch Feed" and "Sort" boxes.</p>
+
+	<p><img src="images/step_3.png" alt="Open Yahoo Pipes" /></p>
+
+	<h3>Step 4: Save Pipe</h3>
+
+	<p>Connect the "Sort" operator to the "Pipe Output" and click "Save" at the top of the screen.</p>
+
+	<p><img src="images/step_4.png" alt="Open Yahoo Pipes" /></p>
+
+	<h3>Step 5: Get Pipe URL</h3>
+
+	<p>Click "Get as JSON" on the pipe page to load the JSON view of the pipe. Then copy the URL in the address bar.</p>
+
+	<p><img src="images/step_5.png" alt="Open Yahoo Pipes" /></p>
+
+	<h3>Step 6: Insert URL into blog</h3>
+
+	<p>Open "index.html" and scroll down to the configuration line which asks for your yahoo pipe URL. Paste the URL and save the file!</p>
+
+	<p><img src="images/step_6.png" alt="Open Yahoo Pipes" /></p>
+
+	<h3>Step 7: Enjoy!</h3>
+
+	<p>Make sure to change any other links in the index.html file such as the links to your online profiles and friends! You also need to set your address so the map shows the correct location!</p>
+
+	<p>You can see this system in action at <a href="http://xeoncross.com">http://xeoncross.com</a>.</p>
+
+	<h3>Sub-Folder Usage</h3>
+
+	<p>If you are using the system in a sub-folder, make sure you edit the .htaccess file and JavaScript "config" variable (in index.html) with the correct name of the sub-folder you are using.</p>
+
+</div>
+</body>
+</html>
