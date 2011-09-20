@@ -1,0 +1,283 @@
+/*
+ * Vertical Rhythm - Auto-ajusting Font/Line-Height Ratio
+ */
+html {
+	height: 100%;
+	font-size: 100%;
+	overflow-y: scroll; /* Force a scrollbar in non-IE */
+	-webkit-text-size-adjust: 100%; /* Prevent iOS text size adjust on orientation change without disabling user zoom */
+	-ms-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0 auto;
+	min-height: 100%;
+}
+
+/* Fonts settings based on the 100E2R standard: http://www.informationarchitects.jp/en/100e2r/ */
+body, button, input, select, textarea {
+	font-family: Georgia, serif;
+	line-height: 1.5em;
+	font-size: 14px;font-family:Helvetica,"Helvetica Neue",Arial,sans-serif;
+	color: #222;
+}
+
+p{margin:0 0 1.5em 0;padding:0}
+h1,h2,h3,h4{color: #000; font-weight:normal;line-height:1.2em;}
+h1{font-size:3em;}
+h2{font-size:2em}
+h3{font-size:1.5em;line-height:2em;}
+h4{font-size:1em;font-weight:bold}
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img { margin:0; }
+
+table{margin:1em 0; border-collapse:collapse;}
+th,td{border:1px solid;padding:1em; border-color: #ddd;}
+blockquote{margin:1.5em;/*font-style:italic*/}
+ul,ol,dl{margin:1.5em;padding:0}
+ul ul,ol ol{margin:0 2em}
+pre{margin:1.5em 0;padding:1.5em;line-height:1.5em}
+
+input,select{margin:0 0 1.5em 0;}
+textarea{height:9em;}
+
+p input, p select {
+	padding: 0 5px;
+	height: 2.5em;
+	line-height: 2.5em;
+	margin-bottom: 0.5em;
+}
+
+iframe { border: 0; max-width: 100%; }
+
+pre,code{font-family:"DejaVu Sans Mono","Bitstream Vera Sans Mono",Monaco,"Courier New",monospace;}
+
+strong	{ font-weight: bold; }
+em	{ font-style: italic; }
+
+
+/* Links
+-------------------------------------------------------------- */
+
+a           	{ color: #009; color: #047DC3; text-decoration: none; }
+a:focus,
+a:hover     	{ color: #000; color: #730B7F; text-decoration: underline }
+a:visited		{}
+a:visted:hover 	{}
+a img			{ border: none; }
+
+
+.container { margin: 20px; }
+
+#feed div
+{
+	border-bottom: 1px solid #ddd;
+	padding: 0 0 1em 0;
+	margin: 0 0 1em 0;
+}
+
+/* Tablets/netbooks (768px+) styles go here */
+@media only screen and (min-width: 768px) {
+
+	body { background: #f3f3f3; }
+
+	#to_content { display: none; }
+
+	.container { margin: 0 auto; padding: 1em 0 3em 0; width: 720px; }
+	#sidebar { width:200px; float: right; }
+	#content { width:500px; float: left; }
+
+	.box, #feed div
+	{
+		background: #fff;
+		border: 1px solid #ddd;
+		padding: 2em;
+		margin: 0 0 1em 0;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+
+
+	#feed div div { border: none; padding: 0; }
+
+	h1, h2.motto {
+	margin: 0; padding: 0; line-height: 1em;
+	}
+
+	h1 {
+	font-family: Georgia;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 0px 1px 2px #ccc;
+	filter: dropshadow(color=#ccc, offx=0, offy=1);
+	}
+
+	h2.motto {
+	margin-bottom: 1em;
+	color: #ccc;
+	text-shadow: 0px 1px 2px #fff;
+	filter: dropshadow(color=#fff, offx=0, offy=1);
+	}
+
+	#sidebar .gravatar { float: left; margin: 0 .7em 0 0; border: 1px solid #fff; line-height: 1px;}
+
+	#sidebar .box
+	{
+		background: #eee;
+		border: 1px solid #ddd;
+		padding: .7em;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		-webkit-box-shadow: inset 0px 0px 0px 1px #fff;
+		-moz-box-shadow: inset 0px 0px 0px 1px #fff;
+		box-shadow: inset 0px 0px 0px 1px #fff;
+		background: rgb(242,242,242); /* Old browsers */
+		background: -moz-linear-gradient(top, rgba(242,242,242,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(242,242,242,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, rgba(242,242,242,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, rgba(242,242,242,1) 0%,rgba(229,229,229,1) 100%); /* Opera11.10+ */
+		background: -ms-linear-gradient(top, rgba(242,242,242,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+		background: linear-gradient(top, rgba(242,242,242,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+	}
+
+	/* Pagination Link */
+	.next { float: right; }
+}
+
+/* Desktops (1024px+) styles go here */
+@media only screen and (min-width: 1024px) {
+	.container { width: 960px; }
+	#sidebar { width:300px; }
+	#content { width:630px; }
+}
+
+/* Print styles
+---------------------------------------- */
+
+/* Print styles inlined to avoid extra HTTP connection */
+
+@media print {
+	* {
+		background: transparent !important;
+		color: black !important;
+		text-shadow: none !important;
+		filter: none !important;
+		-ms-filter: none !important;
+		font-size: 1em !important;
+	}
+
+	h1, h2, h3 { font-weight: bold; }
+
+	a, a:visited {
+		text-decoration: none;
+	}
+
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
+
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+
+	/* Do not show javascript and internal links */
+	a.favicon:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+		content: "";
+	}
+
+	/* Printing Tables: css-discuss.incutio.com/wiki/Printing_Tables */
+	thead {
+		display: table-header-group;
+	}
+
+	tr, img {
+		page-break-inside: avoid;
+	}
+
+	@page {
+		margin: 0.5cm;
+	}
+
+	p, h2, h3 {
+		orphans: 3;
+		widows: 3;
+	}
+
+	h2, h3 {
+		page-break-after: avoid;
+	}
+
+	audio, video, embed, iframe { display: none; }
+}
+
+
+/* Specific Styles
+---------------------------------------- */
+
+#feed blockquote, #feed h2, #feed p { margin: 0; padding: 0; }
+
+.github .title { padding: 1em 0 0 0; }
+
+.github .description {
+	font-style: italic;
+	color: #555;
+	padding: 0 2em;
+}
+
+#map { height: 300px; width: 100%; }
+
+
+#feed blockquote
+{
+	font-size: 1.6em;
+	line-height: 1.4em;
+	font-family: serif;
+}
+
+#content { position: relative; }
+
+#content .c {
+	position: absolute;
+	display: none;
+	width: 100%;
+	overflow: hidden;
+}
+
+#spinner { font-size: 8em; color: #ddd; text-align: center; padding-top: 1em; }
+
+
+#sidebar h3 { margin: 0; padding: 0; }
+
+#sidebar ul { margin: 0 0 1.5em 0; list-style: none;}
+
+#sidebar ul li a {
+display: block;
+line-height: 2em;
+border-bottom: 1px solid #eee;
+position: relative;
+}
+
+ul#nav li {
+direction: rtl;
+text-align: left;
+color: #ddd;
+padding: 0 0 0 0em;
+margin: 0 0 0 0em;
+}
+
+ul#aliases a img {
+float: right;
+vertical-align: middle;
+display: block;
+margin-top: 0.5em;
+}
+
+ul#aliases li a:hover { /* text-decoration: none;  color: #047DC3; border-color: #ccc; */ }
+
+
+.error { border: 1px solid #FA6363; margin: 1em 0; padding: 1em; background: #FBE0E0; }
+
+
+#footer { clear: both; float: left; width: 100%; }

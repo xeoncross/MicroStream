@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+
+	<title>Microstream</title>
+	<meta name="description" content="The Tiny Javascript Lifestream by David Pennington">
+
+	<link rel="stylesheet" media="all" href="/style.css"/>
+
+	<script src="/scripts.js"></script>
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+		google.load("jquery", "1.6.4");
+	</script>
+
+	<!-- OpenID Support -->
+	<link rel="openid.server" href="" />
+	<link rel="openid.delegate" href="" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body lang="en">
+
+<div class="container">
+
+	<a href="#content" id="to_content">Jump to Content</a>
+
+	<div id="sidebar">
+
+		<h1>MicroStream</h1>
+		<h2 class="motto">by David Pennington</h2>
+
+		<ul id="nav">
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/donteventryit/">Missing Page</a></li>
+			<li><a href="/contact">Contact Me</a></li>
+		</ul>
+
+		<p class="box">
+			<a href="http://en.gravatar.com/[USERNAME]" rel="me" class="gravatar">
+			<img src="http://gravatar.com/avatar/[EMAIL]?size=80&d=mm" alt="gravatar" />
+			</a>
+		This is my online lifestream. Here you will find the work I share,
+		questions I ask, and ideas and topics I follow.</p>
+
+		<h3>Come join me!</h3>
+		<ul id="aliases">
+			<li><a href="http://twitter.com/[USERNAME]" rel="me">Twitter</a></li>
+			<li><a href="http://dribbble.com/[USERNAME]/" rel="me">Dribbble</a></li>
+			<li><a href="http://www.delicious.com/[USERNAME]" rel="me">Delicious</a></li>
+			<li><a href="http://www.linkedin.com/in/[USERNAME]" rel="me">LinkedIn</a></li>
+			<li><a href="http://stackoverflow.com/users/#####/[USERNAME]" rel="me">Stackoverflow</a></li>
+			<li><a href="http://www.facebook.com/[USERNAME]" rel="me">Facebook</a></li>
+			<li><a href="http://[USERNAME].tumblr.com" rel="me">Tumblr</a></li>
+			<li><a href="http://www.last.fm/user/[USERNAME]" rel="me">Lastfm</a></li>
+		</ul>
+
+		<p>Powered by the <a href="http://xeoncross.github.com/MicroStream">MicroStream</a> engine
+		built for <a href="http://aneventapart.com/">An Event Apart's</a>
+		<a href="http://10k.aneventapart.com/">10k Challenge</a> by <a href="http://xeoncross.com">David Pennington</a>.
+		Featuring mobile, tablet, desktop, &amp; print formats.</p>
+
+	</div>
+
+	<div id="content" name="content">
+
+		<div id="feed" class="c"></div>
+
+		<div id="404" class="c">
+			<div class="box">
+				<h2>404 - Missing Awesomeness</h2>
+				<p>Seems something awesome <i>has left it's place</i>. Don't worry, you can find more awesomeness by using the navigation links.</p>
+			</div>
+		</div>
+
+		<div id="about" class="c">
+			<div class="box">
+				<h2>About</h2>
+
+				<p>This system is a pure client-side, micro-blogging system built to compile your online life into an easy to view (and theme!) activity stream.</p>
+
+				<p>Rather than relying on server-side languages to build each page, each visiting client handles assembling all required resources! This means less work for the server as your site is basically
+				"crowd-sourced" out to the people that want to see it.</p>
+
+				<p>Built with jQuery, HTML 5, CSS 3, and using advanced features such as <a href="https://developer.mozilla.org/en/dom/storage">localStorage</a> and <a href="https://developer.mozilla.org/en/DOM/Manipulating_the_browser_history">History.pushState</a>
+				while still supporting a wide variety of older devices. It's 10 kilobytes of responsiveness.</p>
+
+				<p>Instructions on setting up the main content feed can be found <a href="http://xeoncross.github.com/MicroStream">here</a> along with additional information
+				about the system.</p>
+
+				<p>Visit <a href="http://aneventapart.com/">An Event Apart's</a> <a href="http://10k.aneventapart.com/">10k Challenge</a> to see other amazing entries.</p>
+
+			</div>
+		</div>
+
+		<div id="contact" class="c">
+			<div class="box">
+				<h2>Contact Me</h2>
+				<p>There is nothing like meeting talented new people. Unfortunally, there is nothing like spam either.
+				Therefore, if you would like to reach me please email <b>my first name at this site</b> or click on one of my social network links to find me.</p>
+
+				<p>If you're intersted in knowing how close I am to you, <i>check out the map</i>. Google knows all.</p>
+
+				<div id="map"></div>
+
+				<h2>Directions</h2>
+				<div id="map_directions"></div>
+			</div>
+		</div>
+
+		<p id="spinner"></p>
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+/**
+ * System configuration array
+ */
+var config = {
+	// Must include starting/ending slash
+	site_path : '/', // or "/sub/folder/" if in subdirectory
+
+	// Cache content for 1 hour
+	cache_life : 60 * 60 * 1000,
+
+	// Number of feed items per-page
+	per_page : 10,
+
+	// Location for google maps on contact page
+	address : '[YOUR ADDRESS HERE]',
+
+	// The URL of the yahoo! pipe to use as the feed source
+	pipe_url : url = '[PLACE PIPE URL HERE]' + '&_callback=?'
+};
+
+/**
+ * Define your URL routes here
+ */
+function route(url)
+{
+	// Show a loading spinner
+	$('#spinner').append(load.spinner(1));
+
+	// @todo: this is dumb, we need better routing
+
+	// Home page?
+	if(url == '/' || ! url)
+	{
+		load.pipe(config.pipe_url, pipe_callback);
+	}
+	else if(url == 'about')
+	{
+		show('about');
+	}
+	else if(url == 'contact')
+	{
+		load.contact();
+	}
+	else
+	{
+		show('404');
+	}
+}
+
+/*
+ * Do not edit below! (unless you want to...)
+ */
+
+var state = {
+	path : '/',
+	params : null
+};
+
+var spinner;
+
+$(document).ready(function()
+{
+	// Keep each site's favicon up-to-date with google!
+	$('#aliases a').each(function(i)
+	{
+		$(this).html(favicon($(this).attr('href')) + $(this).html());
+	});
+
+	// Create current state
+	state.path = window.location.pathname.substr(config.site_path.length);
+	state.params = parseQuery(window.location.search);
+	route(state.path);
+
+	// Capture all link clicks!
+	$('a').bind('click', function(e)
+	{
+		// Fallback for browser that don't support the history API
+		if (!('pushState' in window.history)) return true;
+
+		// Ensure middle, control and command clicks act normally (@kneath)
+		if (e.which == 2 || e.metaKey || e.ctrlKey) return true;
+
+		// Ignore jump links and external links
+		if($(this).attr("href").indexOf('http') === 0 || $(this).attr("href").indexOf('#') === 0) return true;
+
+		// Stop click event
+		e.preventDefault();
+
+		// Remove domain and URL params from path
+		state.path = this.href.replace(/http:\/\/[^\/]+/,'').replace(/(.+?)\?.+/, '$1');
+
+		// Convert URL params into object
+		state.params = parseQuery(this.href);
+
+		// Remove directory from path
+		if(config.site_path && state.path.substr(0, config.site_path.length) == config.site_path)
+		{
+			// Remove sub-path
+			state.path = state.path.substr(config.site_path.length);
+		}
+
+		// Insert history object
+		window.history.pushState(state, this.innerHTML, this.href);
+
+		// Load new path
+		route(state.path);
+
+		return false;
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Set the default file for indexes
+DirectoryIndex index.html
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# If you are using MicroStream in a subdirectory
+# RewriteRule ^(.*)$ /sub/dir/name/index.html [QSA,L]
+
+# If you are using MicroStream in the root directory
+RewriteRule ^(.*)$ /index.html [QSA,L]
