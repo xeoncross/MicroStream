@@ -334,8 +334,11 @@ var create = {
 		text = linkurls(text);
 
 		// Auto-link other users
-		text = text.replace(/(@(\w+))/, "<a href=\"http://twitter.com/$2\">$1</a>");
+		text = text.replace(/(@(\w+))/g, "<a href=\"http://twitter.com/$2\">$1</a>");
 
+		// Auto-link hash tags
+		text = text.replace(/(#(\w+))/g, "<a href=\"http://twitter.com/#!/search?q=%23$2\">$1</a>");
+		
 		var p = document.createElement('blockquote');
 		p.innerHTML = link_favicon(item.link) + ' <span>' + text + '</span>';
 		div.appendChild(p);
