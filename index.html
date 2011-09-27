@@ -24,6 +24,7 @@
 		.download { float: right; }
 		pre { background: #000; color: #fff; padding: 15px;}
 		hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+		code { background: #eee; font-style: normal; }
 		.footer { text-align:center; padding-top:30px; font-style: italic; }
 	</style>
 
@@ -47,13 +48,29 @@
 	<br />
 
 	<h3>About</h3>
-	<p>This project is an entry to the <a href="http://10k.aneventapart.com/">10k Challenge</a> hosted by <a href="http://aneventapart.com/">An Event Apart</a> and <a href="http://microsoft.com">Microsoft</a>.</p>
-
-	<h3>License</h3>
-	<p>MIT</p>
+	<p>This project is an entry to the <a href="http://10k.aneventapart.com/">10k Challenge</a> hosted by
+	<a href="http://aneventapart.com/">An Event Apart</a> and <a href="http://microsoft.com">Microsoft</a>.
+	It is released totally free under the MIT license.</p>
 
 	<h3>Contact</h3>
-	<p>David Pennington (david[]xeoncross.com)<br/></p>
+	<p><a href="http://twitter.com/xeoncross">David Pennington</a> ( david{-}xeoncross.com )<br/></p>
+
+	<h2>About</h2>
+
+	<p>MicroStream is a tumblr-like blogging system that aggregates your content from across the web in
+	one convenient location. By using HTML 5's new <code>window.history</code> we can create a seamless browsing
+	experience from page to page while maintaining a well designed URL structure (instead of hash-tags).</p>
+
+	<p>For user agents that do not yet support <code>window.history</code>, we configure the web server to redirect
+	all requests to index.html so it can inspect the URL path on each request to load the correct resource.
+	This system has a routing system so you can create your own pages. Any request that does
+	not match a defined route will be shown the 404 page.</p>
+
+	<p>MicroStream also supports subfolder setup. So you can run your site in the site root or
+	in a sub directory without trouble. The routing system will add/remove the correct site path.</p>
+
+	<p>The contact page is an example using the Google Maps API to geocode addresses to instantly
+	show you users where you are in the world in relation to them.</p>
 
 	<h3>Download</h3>
 	<p>
